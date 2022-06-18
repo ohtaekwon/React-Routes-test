@@ -6,14 +6,14 @@
 
 - url을 바탕으로 입력하면, 서버에게 요청을 하면 브라우저는 해당 페이지를 client에게 보여준다.
 
-![SPA_1]()
+![SPA_1](https://raw.githubusercontent.com/ohtaekwon/React-Routes-test/master/src/image/spa_1.png)
 
 ### 1.2. SPA방식
 
 - 하지만 리액트에서 SPA로 기존의 서버로부터 해당 url에 대한 데이터를 받아왔지만, 이제는 하나의 큰 App을 받아온다.
 - 서버로부터 전체 묶음을 받아온 후에 브라우저에서 url을 따라서 어떤 것을 보여줄지를 결정하게 된다.
 
-![SPA_2]()
+![SPA_2](https://raw.githubusercontent.com/ohtaekwon/React-Routes-test/master/src/image/SPA_2.png)
 
 ### 1.3. SPA 라우팅 과정
 
@@ -175,3 +175,7 @@ export default App;
 - useHistory를 사용하면, `URL` 끝에 `/home` 을 추가함으로써, 페이지 이동이 가능했다.
 - 하지만 v6부터는 navigate라는 명칭으로 사용한다.
 - `history.push`와 `history.replace` 모두 `navigate`라는 명칭으로 사용한다.
+
+## 참고
+
+- [[React] react-router-dom v6 업그레이드 되면서 달라진 것들](https://velog.io/@soryeongk/ReactRouterDomV6)
