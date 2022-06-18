@@ -10,7 +10,7 @@ import NavLinks from "./components/NavLinks";
 function App() {
   return (
     <BrowserRouter>
-      <Navs />
+      {/* <Navs /> */}
       <NavLinks />
       <Routes>
         <Route path="/login" element={<Login />} />

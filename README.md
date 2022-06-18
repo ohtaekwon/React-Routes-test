@@ -102,3 +102,76 @@ function App() {
 <br/>
 
 ## 7. Dynamic 라우팅
+
+- 두 가지 빙밥으로 동적 라우팅을 적용할 수 잇다.
+
+### 7.1. 방법 1 - 중첩 라우터를 사용하고, 중첩 라우터에서 Outlet컴포넌트를 사용
+
+```jsx
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import Navs from "./components/Navs";
+import NavLinks from "./components/NavLinks";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Navs />
+      <NavLinks />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/profile/*" element={<Profile />} >
+          <Route path=":id" element={<ProfilePost/>}>
+        </Route>
+        <Route path="/about" element={<About />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+```
+
+### 7.2. 방법 1 - 중첩 라우터를 사용하고, 중첩 라우터에서 Outlet컴포넌트를 사용
+
+## 8.Props 사용
+
+### 8.1. pathname 가져오기
+
+- 기존의 방법인 props에서 확인하는 것이 아니라, `useLocataion`을 사용하여 `pathname`을 받아온다.
+
+### 8.2. params 가져오기
+
+- 이것도 또한, props에서 확인하는 것이 아니라, `useParams`에서 호강ㄴ한다.
+
+## 어려웠던 부분
+
+- 많은 부분들에 있어서 v6때 변경이 된 사항들이 존재한다.
+
+### `<Switch>` 대신 `<Routes>`
+
+- 먼저, 기존의 `<Switch>` 를 통해서 경로를 감싸주는 방식 대신에 `<Routes>` 를 사용하는 방식으로 변경되었다.
+
+### 복수의 라우팅을 막는 `exact`
+
+- 기존의 복수의 라우팅을 막는 `exact` 방식이 있었지만, 이제는 더이상 사용하지 않고, 여러 라우팅을 매칭하고 싶은 겨웅에는 URL 뒤에 `*` 을 사용한다.
+- 또한, `component`로 해당 컴포넌트를 넣는 것 대신에, `element`로 컴포넌트를 전달한다.
+
+### Props의 사용
+
+- 컴포넌트들에 Props를 활용해 pathname 등을 확인할 수 있었다.
+- 하지만, 그러한 방법들을 없애고 `useLocation` , `useParams` 등 다양한 `Hook` 등을 사용하여 원하는 정보를 얻을 수 있다.
+- 따라서 이러한 `Hook` 에 대한 사전 공부가 필요하다
+
+### useHistory 대신 useNavigate
+
+- `useHistory`는 Link태그와 유사한 작업을 할 수 있게 도와주는 훅이다.
+- useHistory를 사용하면, `URL` 끝에 `/home` 을 추가함으로써, 페이지 이동이 가능했다.
+- 하지만 v6부터는 navigate라는 명칭으로 사용한다.
+- `history.push`와 `history.replace` 모두 `navigate`라는 명칭으로 사용한다.
